@@ -1,21 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model HomeVm
 
 <!-- Background Area Start -->
-        <section id="slider-container" class="slider-area two"> 
-            <div class="slider-owl owl-theme owl-carousel"> 
+@if (Model.Sliders.Count != 0)
+{
+    <section id="slider-container" class="slider-area two">
+
+        <div class="slider-owl owl-theme owl-carousel">
+            @foreach (var sliderItem in Model.Sliders)
+            {
                 <!-- Start Slingle Slide -->
-                <div class="single-slide item" style="background-image: url(img/slider/slider2.jpg)">
+                <div class="single-slide item" style="background-image: url(img/slider/@sliderItem.ImagePath)">
                     <!-- Start Slider Content -->
-                    <div class="slider-content-area">  
+                    <div class="slider-content-area">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-10 col-md-offset-1"> 
+                                <div class="col-md-10 col-md-offset-1">
                                     <div class="slide-content-wrapper">
                                         <div class="slide-content text-center">
-                                            <h2>EDUCATION MAKES HUMANITY </h2>
-                                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and prsing pain was born and I will give you a complete account of the system  </p>
+                                            <h2>@sliderItem.Title</h2>
+                                            <p>@sliderItem.Description</p>
                                             <a class="default-btn" href="about.html">Learn more</a>
                                         </div>
                                     </div>
@@ -26,50 +29,14 @@
                     <!-- Start Slider Content -->
                 </div>
                 <!-- End Slingle Slide -->
-                <!-- Start Slingle Slide -->
-                <div class="single-slide item" style="background-image: url(img/slider/slider3.jpg)">
-                    <!-- Start Slider Content -->
-                    <div class="slider-content-area">   
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1"> 
-                                    <div class="slide-content-wrapper">
-                                        <div class="slide-content text-center">
-                                            <h2>EDUCATION MAKES HUMANITY </h2>
-                                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and prsing pain was born and I will give you a complete account of the system  </p>
-                                            <a class="default-btn" href="about.html">Learn more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start Slider Content -->
-                </div>
-                <!-- End Slingle Slide -->
-                <!-- Start Slingle Slide -->
-                <div class="single-slide item" style="background-image: url(img/slider/slider1.jpg)">
-                    <!-- Start Slider Content -->
-                    <div class="slider-content-area">  
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-10 col-md-offset-1"> 
-                                    <div class="slide-content-wrapper">
-                                        <div class="slide-content text-center">
-                                            <h2>EDUCATION MAKES HUMANITY </h2>
-                                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and prsing pain was born and I will give you a complete account of the system  </p>
-                                            <a class="default-btn" href="about.html">Learn more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Start Slider Content -->
-                </div>
-                <!-- End Slingle Slide -->								
-            </div>
-        </section>
+            }
+        </div>
+    </section>
+}
+else
+{
+    <div class="alert alert-danger">Error no slider!!!</div>
+}
 		<!-- Background Area End -->
         <!-- Service Start -->
         <div class="service-area two pt-150 pb-150">

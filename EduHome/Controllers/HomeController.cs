@@ -1,13 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EduHome.Data;
+using EduHome.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.Controllers
 {
 	public class HomeController : Controller
 	{
-		public IActionResult Index()
+		private AppDbContext _context;
+
+        public HomeController(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult Index()
 		{
-			return View();
-		}
+            HomeVm vm = new HomeVm();
+            vm.Sliders = _context.Sliders.ToList();
+
+			return View(vm);
+        }
 
 		public IActionResult About()
 		{
