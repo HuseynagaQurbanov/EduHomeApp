@@ -1,6 +1,6 @@
 ﻿namespace EduHome.Dtos.Teacher
 {
-    public class IndexDto
+    public class TeacherDto
     {
         public Guid Id { get; set; }
         public string SmallImage { get; set; }

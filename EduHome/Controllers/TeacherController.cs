@@ -20,7 +20,7 @@ namespace EduHome.Controllers
         {
 
             // select id, imagePath, firstName, lastName, degree from Teachers
-            var list = _dbContext.Teachers.Select(t => new IndexDto()
+            var list = _dbContext.Teachers.Select(t => new TeacherDto()
             {
                 Id = t.Id,
                 SmallImage = t.SmallImagePath,

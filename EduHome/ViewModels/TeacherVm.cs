@@ -4,6 +4,6 @@ namespace EduHome.ViewModels
 {
     public class TeacherVm
     {
-        public List<IndexDto> Teachers { get; set; }
+        public List<TeacherDto> Teachers { get; set; }
     }
 }
