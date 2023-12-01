@@ -4,7 +4,8 @@
 	{
 		public string FirstName { get; set; } = null!;
 		public string LastName { get; set; } = null!;
-		public string ImagePath { get; set; }
+        public string SmallImagePath { get; set; }
+        public string ImagePath { get; set; }
 
 		public ICollection<Hobby> Hobbies { get; set; }
 	}
