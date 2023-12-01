@@ -4,6 +4,7 @@ using EduHome.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduHome.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231201110154_SmallImagePathAddedToPerson")]
+    partial class SmallImagePathAddedToPerson
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -397,34 +399,6 @@ namespace EduHome.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue("Teacher");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("a0e73cf8-9b1c-45f9-8e9c-d6f3c4111142"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FirstName = "Qudret",
-                            ImagePath = "teacher-details.jpg",
-                            IsDeleted = false,
-                            LastName = "Qudretov",
-                            SmallImagePath = "teacher1.jpg",
-                            AboutMe = "Her kese salam 33 yasim var",
-                            Degree = "Master",
-                            Experience = "4 year experience"
-                        },
-                        new
-                        {
-                            Id = new Guid("d4aabd5c-0244-45ff-b4fd-9408ec44fcee"),
-                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FirstName = "Esger",
-                            ImagePath = "teacher-details.jpg",
-                            IsDeleted = false,
-                            LastName = "Letifov",
-                            SmallImagePath = "teacher10.jpg",
-                            AboutMe = "Her kese salam 35 yasim var",
-                            Degree = "Master",
-                            Experience = "4 year experience"
-                        });
                 });
 
             modelBuilder.Entity("EventSpeaker", b =>
