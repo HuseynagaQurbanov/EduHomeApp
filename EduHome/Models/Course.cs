@@ -3,7 +3,8 @@
 	public class Course : BaseEntity
 	{
 		public string ImagePath { get; set; }
-		public string Name { get; set; }
+        public string SmallImagePath { get; set; }
+        public string Name { get; set; }
 		public string Desc { get; set; }
 		public string About { get; set; }
 		public string HowToApply { get; set; }
