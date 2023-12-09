@@ -1,4 +1,5 @@
 ﻿using EduHome.Data;
+using EduHome.Dtos.Blog;
 using EduHome.Dtos.Course;
 using EduHome.Dtos.Teacher;
 using EduHome.ViewModels;
@@ -18,7 +19,6 @@ namespace EduHome.Controllers
 
         public IActionResult Index()
 		{
-
             var CourseList = _context.Courses.Select(t => new CourseDto()
             {
                 Id = t.Id,
@@ -28,10 +28,20 @@ namespace EduHome.Controllers
 				CreatedDate = t.CreatedDate
             }).OrderByDescending(p => p.CreatedDate).Take(3).ToList();
 
+			var BlogList = _context.Blogs.Select(b => new BlogDto()
+			{
+				Id = b.Id,
+				SmallImagePath = b.SmallImagePath,
+				Name = b.Name,
+				Creator = b.Creator,
+				CreatedDate = b.CreatedDate
+			}).OrderByDescending(p => p.CreatedDate).Take(3).ToList();
+
+
             HomeVm vm = new HomeVm();
             vm.Sliders = _context.Sliders.ToList();
 			vm.Courses = CourseList;
-
+			vm.Blogs = BlogList;
             return View(vm);
         }
 
