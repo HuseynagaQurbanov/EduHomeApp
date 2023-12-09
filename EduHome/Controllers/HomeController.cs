@@ -1,6 +1,7 @@
 ﻿using EduHome.Data;
 using EduHome.Dtos.Blog;
 using EduHome.Dtos.Course;
+using EduHome.Dtos.Event;
 using EduHome.Dtos.Teacher;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -37,11 +38,23 @@ namespace EduHome.Controllers
 				CreatedDate = b.CreatedDate
 			}).OrderByDescending(p => p.CreatedDate).Take(3).ToList();
 
+            var EventList = _context.Events.Select(e => new EventDto()
+            {
+                Id = e.Id,
+                SmallImagePath = e.SmallImagePath,
+                Name = e.Name,
+                StartTime = e.StartTime,
+				EndTime = e.EndTime,
+				Venue = e.Venue,
+				CreatedDate = e.CreatedDate,
+            }).OrderByDescending(p => p.CreatedDate).Take(4).ToList();
+
 
             HomeVm vm = new HomeVm();
             vm.Sliders = _context.Sliders.ToList();
 			vm.Courses = CourseList;
 			vm.Blogs = BlogList;
+			vm.Events = EventList;
             return View(vm);
         }
 
